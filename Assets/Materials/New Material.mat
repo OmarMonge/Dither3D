@@ -41,15 +41,16 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Contrast: 1.04
+    - _Contrast: 0.07
     - _DitherMode: 2
     - _Glossiness: 0.461
-    - _InputExposure: 0
+    - _InputExposure: 0.13
     - _InputOffset: -0.18
-    - _Scale: 4.55
+    - _Scale: 8.53
     - _SizeVariability: 1
     - _StretchSmoothness: 1.07
     m_Colors:
     - _Color: {r: 0.6037736, g: 0.5895336, b: 0.5895336, a: 1}
+    - _EmissionColor: {r: 0.8666667, g: 0, b: 0.8286898, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
