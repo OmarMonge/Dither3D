@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 899a69c8bb25c2548abf5b3c4560260a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - kuwaharaShader: {fileID: 4800000, guid: 04a455a173f554c419cdc74b2956ba28, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: c7a5fb9375641e94883bf75573bffec3
+guid: 62b3db54267ead9478a878356b48e20f
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pixelArtFilter: {fileID: 4800000, guid: 40f888868bff54e489d63cf2a046892c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

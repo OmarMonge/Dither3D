@@ -179,8 +179,11 @@ namespace Lightbug.CharacterControllerPro.Demo
 
         public override void PostUpdateBehaviour(float dt)
         {
-            if (cancelOnContact)
-                isDone |= EvaluateCancelOnContact();            
+            if (cancelOnContact){
+                isDone |= EvaluateCancelOnContact();  
+                Debug.Log(isDone);    
+            }
+                          
         }
 
         public virtual void ResetDash()

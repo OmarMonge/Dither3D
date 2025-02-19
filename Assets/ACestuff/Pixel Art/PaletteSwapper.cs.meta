@@ -1,9 +1,11 @@
 fileFormatVersion: 2
-guid: 62b3db54267ead9478a878356b48e20f
+guid: c7a5fb9375641e94883bf75573bffec3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - paletteShader: {fileID: 4800000, guid: 4315cee1d693d8f45877b20a80dcb1b7, type: 3}
+  - colorPalette: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -125,6 +125,9 @@ namespace Lightbug.CharacterControllerPro.Demo
         Renderer[] bodyRenderers = null;
         RaycastHit[] hitsBuffer = new RaycastHit[10];
         RaycastHit[] validHits = new RaycastHit[10];
+        public bool stationaryMode = false; // New variable for stationary camera mode
+        public Transform stationaryTransform;  // Position to lock the camera
+
         Vector3 characterPosition = default(Vector3);
         float lerpedHeight;
 
@@ -140,7 +143,20 @@ namespace Lightbug.CharacterControllerPro.Demo
             cameraMode = cameraMode == CameraMode.FirstPerson ? CameraMode.ThirdPerson : CameraMode.FirstPerson;
         }
 
-        
+ 
+        public void ToggleStationaryMode(Transform newCameraTransform)
+        {
+            stationaryMode = !stationaryMode;
+            stationaryTransform = newCameraTransform;
+
+            if (stationaryMode && stationaryTransform != null)
+            {
+                // Instantly move the camera to the new position
+                transform.position = stationaryTransform.position;
+                transform.rotation = stationaryTransform.rotation;
+            }
+        }
+
         
         void OnValidate()
         {
@@ -310,7 +326,13 @@ namespace Lightbug.CharacterControllerPro.Demo
         {
             // Body visibility ---------------------------------------------------------------------
             HandleBodyVisibility();
-
+            if (stationaryMode)
+            {
+                // Keep camera in place but rotate to follow the player
+                transform.position = stationaryTransform.position;
+                transform.LookAt(targetTransform.position + Vector3.up * 1.5f); // Adjust height
+                return;
+            }
             // Rotation -----------------------------------------------------------------------------------------
             lerpedCharacterUp = targetTransform.up;
 

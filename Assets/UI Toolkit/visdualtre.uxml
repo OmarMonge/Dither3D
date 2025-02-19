@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Omg.uss?fileID=7433441132597879392&amp;guid=b18702116efcce14aa7dcba85bc05573&amp;type=3#Omg" />
+    <engine:VisualElement name="container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/11_uchimura.png?fileID=2800000&amp;guid=061e06a985e6ac44cb2ecca3d123fe32&amp;type=3#11_uchimura&quot;);">
+        <engine:Label text="Mainball;s" class="header" style="font-size: 400px; -unity-font-definition: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=48c528c6c58215147a27d4ecc873225c&amp;type=3#NotInter-Regular&quot;); -unity-text-align: upper-center;" />
+        <engine:Button text="sd" name="AButton" class="button" style="font-size: 209px; width: 367px; align-items: stretch; justify-content: flex-start; align-content: center; -unity-text-align: middle-center; white-space: pre; height: 150px;" />
+    </engine:VisualElement>
+</engine:UXML>
