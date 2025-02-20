@@ -3,7 +3,12 @@ guid: a0e6195340e4e1940b23f82df617b815
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - inkShader: {fileID: 4800000, guid: 94806dd6078f88642bf708a4aa8b5bdb, type: 3}
+  - paperTexture: {fileID: 2800000, guid: 62a4e203dba6f424e88e2ce3cc85800e, type: 3}
+  - inkTexture: {fileID: 2800000, guid: ba2904b391f86324f8f74f4dbed06189, type: 3}
+  - image: {instanceID: 0}
+  - blueNoise: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
