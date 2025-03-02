@@ -9,7 +9,7 @@ namespace Lightbug.Utilities
     /// </summary>
     public abstract class ColliderComponent2D : ColliderComponent
     {
-        protected new Collider2D collider = null;
+        protected Collider2D Collider = null;
 
         public RaycastHit2D[] UnfilteredHits { get; protected set; } = new RaycastHit2D[20];
         public List<RaycastHit2D> FilteredHits { get; protected set; } = new List<RaycastHit2D>(10);
@@ -20,8 +20,8 @@ namespace Lightbug.Utilities
 
         public PhysicsMaterial2D Material
         {
-            get => collider.sharedMaterial;
-            set => collider.sharedMaterial = value;
+            get => Collider.sharedMaterial;
+            set => Collider.sharedMaterial = value;
         }
 
         protected abstract int InternalOverlapBody(Vector3 position, Quaternion rotation, Collider2D[] unfilteredResults, List<Collider2D> filteredResults, OverlapFilterDelegate2D filter);
@@ -48,13 +48,13 @@ namespace Lightbug.Utilities
             {
                 var otherCollider = FilteredOverlaps[i];
 
-                if (otherCollider.transform.IsChildOf(collider.transform))
+                if (otherCollider.transform.IsChildOf(Collider.transform))
                     continue;
 
                 if (otherCollider.isTrigger)
                     continue;
 
-                var colliderDistance2D = Physics2D.Distance(collider, otherCollider);
+                var colliderDistance2D = Physics2D.Distance(Collider, otherCollider);
                 if (!colliderDistance2D.isOverlapped)   // only negative distances (overlaps) are allowed
                     continue;
 
@@ -68,7 +68,7 @@ namespace Lightbug.Utilities
 
         protected bool InternalHitFilter(RaycastHit2D raycastHit)
         {
-            if (raycastHit.collider == collider)
+            if (raycastHit.collider == Collider)
                 return false;
 
             if (raycastHit.collider.isTrigger)
@@ -79,7 +79,7 @@ namespace Lightbug.Utilities
 
         protected bool InternalOverlapFilter(Collider2D collider)
         {
-            if (collider == this.collider)
+            if (collider == this.Collider)
                 return false;
 
             if (collider.isTrigger)
@@ -121,18 +121,18 @@ namespace Lightbug.Utilities
             material.friction = 0f;
             material.bounciness = 0f;
 
-            collider.sharedMaterial = material;
-            collider.hideFlags = HideFlags.NotEditable;
+            Collider.sharedMaterial = material;
+            Collider.hideFlags = HideFlags.NotEditable;
         }
 
         protected override void OnEnable()
         {
-            collider.enabled = true;
+            Collider.enabled = true;
         }
 
         protected override void OnDisable()
         {
-            collider.enabled = false;
+            Collider.enabled = false;
         }
     }
 

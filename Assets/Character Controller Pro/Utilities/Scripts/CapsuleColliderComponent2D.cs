@@ -56,7 +56,7 @@ namespace Lightbug.Utilities
         {
 
             capsuleCollider = gameObject.GetOrAddComponent<CapsuleCollider2D>();
-            collider = capsuleCollider;
+            Collider = capsuleCollider;
 
             base.Awake();
 

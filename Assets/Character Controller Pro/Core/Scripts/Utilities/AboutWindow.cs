@@ -18,7 +18,7 @@ namespace Lightbug.CharacterControllerPro.Core
 
         void OnGUI()
         {
-            EditorGUILayout.SelectableLabel("Version: 1.4.11", GUILayout.Height(15f));
+            EditorGUILayout.SelectableLabel("Version: 1.4.12", GUILayout.Height(15f));
             EditorGUILayout.SelectableLabel("Author : Juan Sálice (Lightbug)", GUILayout.Height(15f));
             EditorGUILayout.SelectableLabel("Email : lightbug14@gmail.com", GUILayout.Height(15f));
         }

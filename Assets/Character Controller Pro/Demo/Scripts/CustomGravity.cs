@@ -10,7 +10,7 @@ namespace Lightbug.CharacterControllerPro.Demo
         public Transform planet;
         public float gravity = 10f;
 
-        new Rigidbody rigidbody;
+        Rigidbody _rigidbody;
 
         private void Awake()
         {
@@ -20,8 +20,8 @@ namespace Lightbug.CharacterControllerPro.Demo
                 return;
             }
 
-            rigidbody = GetComponent<Rigidbody>();
-            rigidbody.useGravity = false;
+            _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody.useGravity = false;
         }
 
         void FixedUpdate()
@@ -29,9 +29,9 @@ namespace Lightbug.CharacterControllerPro.Demo
             Vector3 dir = (planet.position - transform.position).normalized;
 
 #if UNITY_6000_0_OR_NEWER
-            rigidbody.linearVelocity += dir * gravity * Time.deltaTime;
+            _rigidbody.linearVelocity += dir * gravity * Time.deltaTime;
 #else
-            rigidbody.velocity += dir * gravity * Time.deltaTime;
+            _rigidbody.velocity += dir * gravity * Time.deltaTime;
 #endif
 
         }

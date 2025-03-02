@@ -3,26 +3,21 @@
 
 namespace Lightbug.CharacterControllerPro.Demo
 {
-
     public class AddTorque3D : AddTorque
     {
-        new Rigidbody rigidbody = null;
-
+        Rigidbody _rigidbody = null;
 
         protected override void Awake()
         {
             base.Awake();
 
-            rigidbody = GetComponent<Rigidbody>();
-            rigidbody.maxAngularVelocity = maxAngularVelocity;
+            _rigidbody = GetComponent<Rigidbody>();
+            _rigidbody.maxAngularVelocity = maxAngularVelocity;
         }
 
         protected override void AddTorqueToRigidbody()
         {
-            rigidbody.AddRelativeTorque(torque);
+            _rigidbody.AddRelativeTorque(torque);
         }
-
-
     }
-
 }

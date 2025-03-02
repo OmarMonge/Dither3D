@@ -66,6 +66,7 @@
 
 using UnityEngine;
 using Lightbug.CharacterControllerPro.Core;
+using Lightbug.CharacterControllerPro.Implementation;
 using Lightbug.Utilities;
 using System;
 
@@ -73,6 +74,7 @@ namespace Lightbug.CharacterControllerPro.Demo
 {
     public class JumpPad1 : CharacterDetector
     {
+        public CharacterStateController characterStateController;
         public Trigger trig;
         public bool useLocalSpace = true;
         public Vector3 direction = Vector3.up;
@@ -92,7 +94,7 @@ namespace Lightbug.CharacterControllerPro.Demo
 
                 x.SetActive(isCamera1Active);  // Enable Camera 1 when true
                 y.SetActive(!isCamera1Active); // Enable Camera 2 when false
-
+                 characterStateController.SwapExternalReference(x.transform);
                 Debug.Log("Camera Switched: " + (isCamera1Active ? "Camera 1 Active" : "Camera 2 Active"));
             }
         }
@@ -104,7 +106,7 @@ namespace Lightbug.CharacterControllerPro.Demo
 
                 x.SetActive(!isCamera1Active);  // Enable Camera 1 when true
                 y.SetActive(isCamera1Active); // Enable Camera 2 when false
-
+                characterStateController.SwapExternalReference(y.transform);
                 Debug.Log("Camera Switched: " + (isCamera1Active ? "Camera 1 Active" : "Camera 2 Active"));
             }
         }

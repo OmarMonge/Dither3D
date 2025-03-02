@@ -44,13 +44,13 @@ Material:
     - _Contrast: 0.07
     - _DitherMode: 2
     - _Glossiness: 0.461
-    - _InputExposure: 0.13
+    - _InputExposure: 0.25
     - _InputOffset: -0.18
     - _Scale: 8.53
     - _SizeVariability: 1
     - _StretchSmoothness: 1.07
     m_Colors:
-    - _Color: {r: 0.6037736, g: 0.5895336, b: 0.5895336, a: 1}
-    - _EmissionColor: {r: 0.8666667, g: 0, b: 0.8286898, a: 1}
+    - _Color: {r: 1, g: 0.6855033, b: 0.6084906, a: 1}
+    - _EmissionColor: {r: 0.8679245, g: 0.20060521, b: 0.837729, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

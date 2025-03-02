@@ -156,6 +156,14 @@ namespace Lightbug.CharacterControllerPro.Implementation
         {
             EnqueueTransition(PreviousState);
         }
+        public void SwapExternalReference(Transform newReference)
+        {
+         if (newReference != null)
+            {
+            ExternalReference = newReference;
+            Debug.Log("ExternalReference changed to: " + newReference.name);
+             }
+        }
 
         #region MovementReference
 

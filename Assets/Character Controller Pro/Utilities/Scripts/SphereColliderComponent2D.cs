@@ -52,7 +52,7 @@ namespace Lightbug.Utilities
         {
 
             circleCollider = gameObject.GetOrAddComponent<CircleCollider2D>(true);
-            collider = circleCollider;
+            Collider = circleCollider;
 
             base.Awake();
         }

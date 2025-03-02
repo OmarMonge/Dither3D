@@ -47,7 +47,7 @@ namespace Lightbug.Utilities
         protected override void Awake()
         {
             sphereCollider = gameObject.GetOrAddComponent<SphereCollider>(true);
-            collider = sphereCollider;
+            Collider = sphereCollider;
 
             base.Awake();
         }

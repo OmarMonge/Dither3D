@@ -44,7 +44,7 @@ namespace Lightbug.Utilities
         protected override void Awake()
         {
             boxCollider = gameObject.GetOrAddComponent<BoxCollider>(true);
-            collider = boxCollider;
+            Collider = boxCollider;
 
             base.Awake();
 

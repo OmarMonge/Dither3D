@@ -7,15 +7,15 @@ namespace Lightbug.Utilities
     /// </summary>
     public sealed class RigidbodyComponent3D : RigidbodyComponent
     {
-        new Rigidbody rigidbody = null;
+        Rigidbody _rigidbody = null;
 
-        protected override bool IsUsingContinuousCollisionDetection => rigidbody.collisionDetectionMode > 0;
+        protected override bool IsUsingContinuousCollisionDetection => _rigidbody.collisionDetectionMode > 0;
 
         public override HitInfo Sweep(Vector3 position, Vector3 direction, float distance)
         {
             var p = Position;
             Position = position;
-            rigidbody.SweepTest(direction, out RaycastHit raycastHit, distance);
+            _rigidbody.SweepTest(direction, out RaycastHit raycastHit, distance);
             Position = p;
             return new HitInfo(ref raycastHit, direction);
         }
@@ -23,8 +23,8 @@ namespace Lightbug.Utilities
         protected override void Awake()
         {
             base.Awake();
-            rigidbody = gameObject.GetOrAddComponent<Rigidbody>();
-            rigidbody.hideFlags = HideFlags.NotEditable;
+            _rigidbody = gameObject.GetOrAddComponent<Rigidbody>();
+            _rigidbody.hideFlags = HideFlags.NotEditable;
 
             previousContinuousCollisionDetection = IsUsingContinuousCollisionDetection;
         }
@@ -34,36 +34,36 @@ namespace Lightbug.Utilities
 
         public override float Mass
         {
-            get => rigidbody.mass;
-            set => rigidbody.mass = value;
+            get => _rigidbody.mass;
+            set => _rigidbody.mass = value;
         }
 
         public override float LinearDrag
         {
 #if UNITY_6000_0_OR_NEWER
-            get => rigidbody.linearDamping;
-            set => rigidbody.linearDamping = value;
+            get => _rigidbody.linearDamping;
+            set => _rigidbody.linearDamping = value;
 #else
-            get => rigidbody.drag;
-            set => rigidbody.drag = value;
+            get => _rigidbody.drag;
+            set => _rigidbody.drag = value;
 #endif
         }
 
         public override float AngularDrag
         {
 #if UNITY_6000_0_OR_NEWER
-            get => rigidbody.angularDamping;
-            set => rigidbody.angularDamping = value;
+            get => _rigidbody.angularDamping;
+            set => _rigidbody.angularDamping = value;
 #else
-            get => rigidbody.angularDrag;
-            set => rigidbody.angularDrag = value;            
+            get => _rigidbody.angularDrag;
+            set => _rigidbody.angularDrag = value;            
 #endif
         }
 
 
         public override bool IsKinematic
         {
-            get => rigidbody.isKinematic;
+            get => _rigidbody.isKinematic;
             set
             {
                 if (value == IsKinematic)
@@ -73,11 +73,11 @@ namespace Lightbug.Utilities
                 if (value)
                 {
                     ContinuousCollisionDetection = false;
-                    rigidbody.isKinematic = true;
+                    _rigidbody.isKinematic = true;
                 }
                 else
                 {
-                    rigidbody.isKinematic = false;
+                    _rigidbody.isKinematic = false;
                     ContinuousCollisionDetection = previousContinuousCollisionDetection;
                 }
 
@@ -87,62 +87,62 @@ namespace Lightbug.Utilities
 
         public override bool UseGravity
         {
-            get => rigidbody.useGravity;
-            set => rigidbody.useGravity = value;
+            get => _rigidbody.useGravity;
+            set => _rigidbody.useGravity = value;
         }
 
         public override bool UseInterpolation
         {
-            get => rigidbody.interpolation == RigidbodyInterpolation.Interpolate;
-            set => rigidbody.interpolation = value ? RigidbodyInterpolation.Interpolate : RigidbodyInterpolation.None;
+            get => _rigidbody.interpolation == RigidbodyInterpolation.Interpolate;
+            set => _rigidbody.interpolation = value ? RigidbodyInterpolation.Interpolate : RigidbodyInterpolation.None;
         }
 
         public override bool ContinuousCollisionDetection
         {
-            get => rigidbody.collisionDetectionMode == CollisionDetectionMode.Continuous;
-            set => rigidbody.collisionDetectionMode = value ? CollisionDetectionMode.Continuous : CollisionDetectionMode.Discrete;
+            get => _rigidbody.collisionDetectionMode == CollisionDetectionMode.Continuous;
+            set => _rigidbody.collisionDetectionMode = value ? CollisionDetectionMode.Continuous : CollisionDetectionMode.Discrete;
         }
 
         public override RigidbodyConstraints Constraints
         {
-            get => rigidbody.constraints;
-            set => rigidbody.constraints = value;
+            get => _rigidbody.constraints;
+            set => _rigidbody.constraints = value;
         }
 
         public override Vector3 Position
         {
-            get => rigidbody.position;
-            set => rigidbody.position = value;
+            get => _rigidbody.position;
+            set => _rigidbody.position = value;
         }
 
         public override Quaternion Rotation
         {
-            get => rigidbody.rotation;
-            set => rigidbody.rotation = value;
+            get => _rigidbody.rotation;
+            set => _rigidbody.rotation = value;
         }
 
         public override Vector3 Velocity
         {
 #if UNITY_6000_0_OR_NEWER
-            get => rigidbody.linearVelocity;
-            set => rigidbody.linearVelocity = value;
+            get => _rigidbody.linearVelocity;
+            set => _rigidbody.linearVelocity = value;
 #else
-            get => rigidbody.velocity;
-            set => rigidbody.velocity = value;            
+            get => _rigidbody.velocity;
+            set => _rigidbody.velocity = value;            
 #endif
         }
 
         public override Vector3 AngularVelocity
         {
-            get => rigidbody.angularVelocity;
-            set => rigidbody.angularVelocity = value;
+            get => _rigidbody.angularVelocity;
+            set => _rigidbody.angularVelocity = value;
         }
 
-        public override void Interpolate(Vector3 position) => rigidbody.MovePosition(position);
-        public override void Interpolate(Quaternion rotation) => rigidbody.MoveRotation(rotation);
-        public override Vector3 GetPointVelocity(Vector3 point) => rigidbody.GetPointVelocity(point);
-        public override void AddForceToRigidbody(Vector3 force, ForceMode forceMode = ForceMode.Force) => rigidbody.AddForce(force, forceMode);
-        public override void AddExplosionForceToRigidbody(float explosionForce, Vector3 explosionPosition, float explosionRadius, float upwardsModifier = 0) => rigidbody.AddExplosionForce(explosionForce, explosionPosition, explosionRadius, upwardsModifier);
+        public override void Interpolate(Vector3 position) => _rigidbody.MovePosition(position);
+        public override void Interpolate(Quaternion rotation) => _rigidbody.MoveRotation(rotation);
+        public override Vector3 GetPointVelocity(Vector3 point) => _rigidbody.GetPointVelocity(point);
+        public override void AddForceToRigidbody(Vector3 force, ForceMode forceMode = ForceMode.Force) => _rigidbody.AddForce(force, forceMode);
+        public override void AddExplosionForceToRigidbody(float explosionForce, Vector3 explosionPosition, float explosionRadius, float upwardsModifier = 0) => _rigidbody.AddExplosionForce(explosionForce, explosionPosition, explosionRadius, upwardsModifier);
     }
 
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3186469250366012281}
   - component: {fileID: 3186469250366012282}
   - component: {fileID: 3186469250366012284}
+  - component: {fileID: 432135000632629580}
   m_Layer: 0
   m_Name: Camera 3D
   m_TagString: MainCamera
@@ -26,12 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3186469250366012285}
+  serializedVersion: 2
   m_LocalRotation: {x: 0.11994, y: -0.7058958, z: 0.12321718, w: 0.6871267}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!20 &3186469250366012281
 Camera:
@@ -47,9 +49,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -97,8 +107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputHandlerSettings:
-    inputHandler: {fileID: 0}
     humanInputType: 0
+    inputHandler: {fileID: 0}
   axes: Camera
   zoomAxis: Camera Zoom
   targetTransform: {fileID: 0}
@@ -129,3 +139,17 @@ MonoBehaviour:
     m_Bits: 1
   considerKinematicRigidbodies: 1
   considerDynamicRigidbodies: 1
+--- !u!114 &432135000632629580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186469250366012285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 0}

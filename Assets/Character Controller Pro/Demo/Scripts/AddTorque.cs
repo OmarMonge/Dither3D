@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Lightbug.Utilities;
+﻿using UnityEngine;
 
 namespace Lightbug.CharacterControllerPro.Demo
 {
-
     public abstract class AddTorque : MonoBehaviour
     {
         [SerializeField]
@@ -18,14 +14,9 @@ namespace Lightbug.CharacterControllerPro.Demo
 
         protected virtual void Awake() { }
 
-
-
         void FixedUpdate()
         {
             AddTorqueToRigidbody();
         }
-
-
     }
-
 }

@@ -28,14 +28,14 @@ namespace Lightbug.CharacterControllerPro.Demo
 
         [Header("Graphics")]
 
-
         [SerializeField]
         GameObject graphicsObject = null;
 
         [Header("Camera")]
-
         [SerializeField]
-        new Camera3D camera = null;
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
+        Camera3D camera = null;
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
 
         [UnityEngine.Serialization.FormerlySerializedAs("frameRateText")]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace Lightbug.CharacterControllerPro.Demo
 
         float GetRefreshRateValue()
         {
-#if UNITY_2023_1_OR_NEWER
+#if UNITY_2022_2_OR_NEWER
             return (float)Screen.currentResolution.refreshRateRatio.value;
 #else
             return Screen.currentResolution.refreshRate;

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 094c32475b9748548b6cc5efda879f36
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - chromaticAberration: {fileID: 4800000, guid: 321bee864d6676d4dbf7189df5dd4837,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

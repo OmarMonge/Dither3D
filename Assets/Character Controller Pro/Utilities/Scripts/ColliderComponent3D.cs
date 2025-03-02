@@ -10,10 +10,7 @@ namespace Lightbug.Utilities
     /// </summary>
     public abstract class ColliderComponent3D : ColliderComponent
     {
-
-#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
-        protected Collider collider = null;
-#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
+        protected Collider Collider = null;
 
         public RaycastHit[] UnfilteredHits { get; protected set; } = new RaycastHit[20];
         public List<RaycastHit> FilteredHits { get; protected set; } = new List<RaycastHit>(10);
@@ -24,14 +21,14 @@ namespace Lightbug.Utilities
 #if UNITY_6000_0_OR_NEWER
         public PhysicsMaterial Material
         {
-            get => collider.sharedMaterial;
-            set => collider.sharedMaterial = value;
+            get => Collider.sharedMaterial;
+            set => Collider.sharedMaterial = value;
         }
 #else
         public PhysicMaterial Material
         {
-            get => collider.sharedMaterial;
-            set => collider.sharedMaterial = value;
+            get => Collider.sharedMaterial;
+            set => Collider.sharedMaterial = value;
         }
 #endif
 
@@ -59,14 +56,14 @@ namespace Lightbug.Utilities
             {
                 var otherCollider = FilteredOverlaps[i];
 
-                if (otherCollider.transform.IsChildOf(collider.transform))
+                if (otherCollider.transform.IsChildOf(Collider.transform))
                     continue;
 
                 if (otherCollider.isTrigger)
                     continue;
 
                 var overlapped = Physics.ComputePenetration(
-                    collider,
+                    Collider,
                     position,
                     rotation,
                     otherCollider,
@@ -89,7 +86,7 @@ namespace Lightbug.Utilities
 
         protected bool InternalHitFilter(RaycastHit raycastHit)
         {
-            if (raycastHit.collider == collider)
+            if (raycastHit.collider == Collider)
                 return false;
 
             if (raycastHit.collider.isTrigger)
@@ -100,7 +97,7 @@ namespace Lightbug.Utilities
 
         protected bool InternalOverlapFilter(Collider collider)
         {
-            if (collider == this.collider)
+            if (collider == this.Collider)
                 return false;
 
             if (collider.isTrigger)
@@ -150,18 +147,18 @@ namespace Lightbug.Utilities
             material.staticFriction = 0f;
             material.bounciness = 0f;
 
-            collider.sharedMaterial = material;
-            collider.hideFlags = HideFlags.NotEditable;
+            Collider.sharedMaterial = material;
+            Collider.hideFlags = HideFlags.NotEditable;
         }
 
         protected override void OnEnable()
         {
-            collider.enabled = true;
+            Collider.enabled = true;
         }
 
         protected override void OnDisable()
         {
-            collider.enabled = false;
+            Collider.enabled = false;
         }
     }
 

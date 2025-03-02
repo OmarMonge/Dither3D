@@ -2324,12 +2324,15 @@ namespace Lightbug.CharacterControllerPro.Core
                     {
                         if (preventUnstableClimbing && bottomCollision && !stableHit)
                         {
-                            bool isUpwardsDisplacement = transform.InverseTransformVectorUnscaled(Vector3.Project(displacement, Up)).y > 0f;
-
+                            var projectedMovement = Vector3.ProjectOnPlane(displacement, collisionInfo.hitInfo.normal);
+                            bool isUpwardsDisplacement = transform.InverseTransformVectorUnscaled(Vector3.Project(projectedMovement, Up)).y > 0f;
                             if (isUpwardsDisplacement)
-                                displacement = Vector3.Project(displacement, Up);
+                            {
+                                var fakeWallNormal = Vector3.ProjectOnPlane(collisionInfo.hitInfo.normal, Up).normalized;
+                                displacement = Vector3.ProjectOnPlane(displacement, fakeWallNormal);
+                            }
                             else
-                                displacement = Vector3.ProjectOnPlane(displacement, collisionInfo.hitInfo.normal);
+                                displacement = projectedMovement;
                         }
                         else
                         {

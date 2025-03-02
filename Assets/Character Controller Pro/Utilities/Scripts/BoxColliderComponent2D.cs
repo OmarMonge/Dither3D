@@ -52,7 +52,7 @@ namespace Lightbug.Utilities
         {
 
             boxCollider = gameObject.GetOrAddComponent<BoxCollider2D>(true);
-            collider = boxCollider;
+            Collider = boxCollider;
 
             base.Awake();
 
